@@ -1,0 +1,40 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+class AddCommentView {
+  constructor() {
+    _defineProperty(this, "_parentElement", document.querySelector('.song'));
+  }
+
+  addHandlerAddComment(handler) {
+    this._parentElement.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const author = form.querySelectorAll('input')[0].value;
+      const comment = form.querySelector('textarea').value;
+      let rating = 0;
+      form.querySelectorAll('input').forEach(star => {
+        if (star.checked) {
+          rating = +star.value;
+        }
+      });
+
+      if (author === '' || comment === '' || rating === 0) {
+        alert('有欄位漏填囉');
+      } else {
+        handler([author, comment, rating]);
+      }
+    });
+  }
+
+}
+
+var _default = new AddCommentView();
+
+exports.default = _default;

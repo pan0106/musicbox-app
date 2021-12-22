@@ -1,0 +1,41 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+class FeaturesView {
+  constructor() {
+    _defineProperty(this, "_parentElement", document.querySelector('.features'));
+
+    _defineProperty(this, "_tabs", document.querySelectorAll('.features__tab'));
+
+    _defineProperty(this, "_tabsContainer", document.querySelector('.features__tab-container'));
+
+    _defineProperty(this, "_tabsContent", document.querySelectorAll('.features__content'));
+  }
+
+  addHandlerTabs() {
+    this._tabsContainer.addEventListener('click', function (e) {
+      const clicked = e.target.closest('.features__tab');
+      if (!clicked) return; //remove active classes//
+
+      this._tabs.forEach(t => t.classList.remove('features__tab--active'));
+
+      this._tabsContent.forEach(c => c.classList.remove('features__content--active')); //Active tab//
+
+
+      clicked.classList.add('features__tab--active'); //Activate content area//
+
+      document.querySelector(`.features__content--${clicked.dataset.tab}`).classList.add('features__content--active');
+    }.bind(this));
+  }
+
+}
+
+var _default = new FeaturesView();
+
+exports.default = _default;

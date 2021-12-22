@@ -1,0 +1,46 @@
+.section3 {
+  grid-area: newArtists;
+}
+.newArtists {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.newArtist {
+  width: 25rem;
+  background-color: $color-grad-3;
+  box-shadow: 1rem 1.5rem 2rem rgba(black, 0.2rem);
+  border-radius: 5px;
+  overflow: hidden;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: translateY(-1rem);
+  }
+
+  &__img {
+    width: 100%;
+  }
+
+  &__detail {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 700;
+
+    & svg {
+      width: 2.5rem;
+      height: 2.5rem;
+      margin: 1rem 2rem;
+    }
+  }
+
+  &__iconUser {
+    fill: rgb(65, 44, 25);
+  }
+  &__iconPlay {
+    fill: rgb(238, 35, 35);
+  }
+}

@@ -1,0 +1,124 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addComment = void 0;
+exports.calcRating = calcRating;
+exports.state = exports.loadSong = exports.loadSearchResults = exports.getSearchResultsPage = exports.getCharts = void 0;
+
+var _config = require("./config.js");
+
+var _helpers = require("./helpers.js");
+
+const state = {
+  song: {},
+  search: {
+    query: '',
+    results: [],
+    page: 1,
+    resultsPerPage: _config.RES_PER_PAGE
+  },
+  fakeDatabase: _config.FAKE_DATABASE,
+  charts: []
+};
+exports.state = state;
+
+const loadSong = async function (id) {
+  try {
+    const data = await (0, _helpers.getJSON)(`${_config.API_URL}tracks/${id}?territory=TW`);
+    state.song = {
+      id: data.id,
+      title: data.name,
+      album: data.album.name,
+      artist: data.album.artist.name,
+      releaseDate: data.album.release_date,
+      albumImage: data.album.images[1].url,
+      albumImageSmall: data.album.images[0].url,
+      artistImage: data.album.artist.images[1].url,
+      sourceUrl: data.url
+    };
+
+    if (state.fakeDatabase.some(dbSong => dbSong.id === state.song.id)) {
+      state.fakeDatabase.forEach(dbSong => {
+        if (dbSong.id === state.song.id) state.song.comments = dbSong.comments;
+      });
+    }
+  } catch (err) {
+    throw err;
+  }
+};
+
+exports.loadSong = loadSong;
+
+const loadSearchResults = async function (query) {
+  try {
+    state.search.query = query;
+    const data = await (0, _helpers.getJSON)(`${_config.API_URL}search?q=${query}&territory=TW&limit=50&type=artist,track`);
+    state.search.results = data.tracks.data.map(song => {
+      return {
+        id: song.id,
+        title: song.name,
+        artist: song.album.artist.name,
+        albumImage: song.album.images[0].url
+      };
+    });
+    state.search.page = 1;
+  } catch (err) {
+    console.error(`${err}!!!`);
+    throw err;
+  }
+};
+
+exports.loadSearchResults = loadSearchResults;
+
+const getSearchResultsPage = function (page = state.search.page) {
+  state.search.page = page;
+  const start = (page - 1) * 10;
+  const end = page * 10;
+  return state.search.results.slice(start, end);
+}; ///////////////rating
+
+
+exports.getSearchResultsPage = getSearchResultsPage;
+
+function calcRating(obj) {
+  let sum = 0;
+  obj.comments.forEach(comment => {
+    sum += comment.rating;
+  });
+  return sum / obj.comments.length; ///單曲平均分數
+}
+
+const getCharts = function () {
+  return state.fakeDatabase.sort(function (a, b) {
+    return calcRating(b) - calcRating(a);
+  });
+}; //add comment
+
+
+exports.getCharts = getCharts;
+
+const addComment = function (commentArr) {
+  if (state.fakeDatabase.some(dbSong => dbSong.id === state.song.id)) {
+    state.fakeDatabase.find(dbSong => dbSong.id === state.song.id).comments.push({
+      author: commentArr[0],
+      rating: commentArr[2],
+      content: commentArr[1]
+    });
+  } else {
+    state.fakeDatabase.push({
+      id: state.song.id,
+      title: state.song.title,
+      image: state.song.albumImageSmall,
+      comments: [{
+        author: commentArr[0],
+        rating: commentArr[2],
+        content: commentArr[1]
+      }]
+    });
+    state.song.comments = state.fakeDatabase.find(dbSong => dbSong.id === state.song.id).comments;
+  }
+};
+
+exports.addComment = addComment;

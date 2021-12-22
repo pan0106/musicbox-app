@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/sass/main.css" />
+    <script defer src="src/js/controller.js"></script>
+
+    <title>forkify // Search over 1,000,000 recipes</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="header" id="header">
+        <img src="src/img/logo.png" alt="Logo" class="header__logo" />
+        <form class="search">
+          <input type="text" class="search__field" placeholder="藝人或歌曲" />
+          <button class="btn search__btn">
+            <svg class="search__icon">
+              <use href="src/img/icons.svg#icon-search"></use>
+            </svg>
+            <span>Search</span>
+          </button>
+        </form>
+
+        <nav class="nav">
+          <ul class="nav__links">
+            <li class="nav__item">
+              <a class="nav__link" href="#section--1">本站特色</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#section--2">排行榜</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#section--3">潛力新秀</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <div class="search-results">
+        <ul class="results"></ul>
+
+        <div class="pagination"></div>
+      </div>
+
+      <div class="song">
+        <div class="message">
+          <div>
+            <svg>
+              <use href="src/img/icons.svg#icon-smile"></use>
+            </svg>
+          </div>
+          <p>搜尋喜愛的藝人、歌曲</p>
+        </div>
+      </div>
+      <section class="section section1" id="section--1">
+        <div class="section__title">
+          <h2 class="section__description">本站簡介</h2>
+          <h3 class="section__header">音樂愛好者集合 3大功能一次看</h3>
+        </div>
+
+        <div class="features">
+          <div class="features__tab-container">
+            <button
+              class="features__tab features__tab--1 features__tab--active"
+              data-tab="1"
+            >
+              <span>01</span>搜尋歌曲
+            </button>
+            <button class="features__tab features__tab--2" data-tab="2">
+              <span>02</span>留言評分
+            </button>
+            <button class="features__tab features__tab--3" data-tab="3">
+              <span>03</span>查看排行
+            </button>
+          </div>
+
+          <div
+            class="
+              features__content features__content--1 features__content--active
+            "
+          >
+            <h5 class="features__header">上萬首歌曲 1秒快速搜尋</h5>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+
+          <div class="features__content features__content--2">
+            <h5 class="features__header">幫愛歌留下5星評論</h5>
+            <p>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+              cupidatat non proident, sunt in culpa qui officia deserunt mollit
+              anim id est laborum.
+            </p>
+          </div>
+
+          <div class="features__content features__content--3">
+            <h5 class="features__header">熱門歌曲榜單</h5>
+            <p>
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+              officia deserunt mollit anim id est laborum. Ut enim ad minim
+              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+              ex ea commodo consequat.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="section section2" id="section--2">
+        <div class="section__title">
+          <h2 class="section__description">排行榜</h2>
+          <h3 class="section__header">熱門歌曲不容錯過</h3>
+        </div>
+        <div class="charts"></div>
+      </section>
+      <section class="section section3" id="section--3">
+        <div class="section__title">
+          <h2 class="section__description">潛力新秀</h2>
+          <h3 class="section__header">超高點閱率 素人歌手</h3>
+        </div>
+        <div class="newArtists">
+          <div class="newArtist">
+            <img
+              src="./src/img/luke-thornton-8_RrNK5dg3k-unsplash.jpg"
+              alt="Matthew Baker"
+              class="newArtist__img"
+            />
+            <div class="newArtist__detail">
+              <svg class="newArtist__iconUser">
+                <use xlink:href="./src/img/icons-2.svg#icon-user"></use>
+              </svg>
+              <p>Matthew Baker</p>
+            </div>
+            <div class="newArtist__detail">
+              <svg class="newArtist__iconPlay">
+                <use xlink:href="./src/img/icons-2.svg#icon-play"></use>
+              </svg>
+              <p>37,238,000次</p>
+            </div>
+          </div>
+
+          <div class="newArtist">
+            <img
+              src="./src/img/soundtrap-1NAYqSlnXo8-unsplash.jpg"
+              alt="Rena Boatman"
+              class="newArtist__img"
+            />
+            <div class="newArtist__detail">
+              <svg class="newArtist__iconUser">
+                <use xlink:href="./src/img/icons-2.svg#icon-user"></use>
+              </svg>
+              <p>Rena Boatman</p>
+            </div>
+            <div class="newArtist__detail">
+              <svg class="newArtist__iconPlay">
+                <use xlink:href="./src/img/icons-2.svg#icon-play"></use>
+              </svg>
+              <p>24,237,000次</p>
+            </div>
+          </div>
+
+          <div class="newArtist">
+            <img
+              src="./src/img/sam-moqadam-DGzxQpml7e4-unsplash.jpg"
+              alt="David Burley"
+              class="newArtist__img"
+            />
+            <div class="newArtist__detail">
+              <svg class="newArtist__iconUser">
+                <use xlink:href="./src/img/icons-2.svg#icon-user"></use>
+              </svg>
+              <p>David Burley</p>
+            </div>
+            <div class="newArtist__detail">
+              <svg class="newArtist__iconPlay">
+                <use xlink:href="./src/img/icons-2.svg#icon-play"></use>
+              </svg>
+              <p>8,472,000次</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <ul class="footer__nav">
+          <li class="footer__item">
+            <a class="footer__link" href="#">About</a>
+          </li>
+          <li class="footer__item">
+            <a class="footer__link" href="#">Terms of Use</a>
+          </li>
+          <li class="footer__item">
+            <a class="footer__link" href="#">Privacy Policy</a>
+          </li>
+          <li class="footer__item">
+            <a class="footer__link" href="#">Blog</a>
+          </li>
+          <li class="footer__item">
+            <a class="footer__link" href="#">Contact Us</a>
+          </li>
+        </ul>
+        <p class="footer__copyright">
+          &copy; Copyright 2021 by <span>Music Box</span>
+          . Use for learning and my portfolio.
+        </p>
+      </footer>
+    </div>
+
+    <!-- <div class="overlay hidden"></div>
+    <div class="add-recipe-window hidden">
+      <button class="btn--close-modal">&times;</button>
+      <form class="upload">
+        <div class="upload__column">
+          <h3 class="upload__heading">Recipe data</h3>
+          <label>Title</label>
+          <input value="TEST" required name="title" type="text" />
+          <label>URL</label>
+          <input value="TEST" required name="sourceUrl" type="text" />
+          <label>Image URL</label>
+          <input value="TEST" required name="image" type="text" />
+          <label>Publisher</label>
+          <input value="TEST" required name="publisher" type="text" />
+          <label>Prep time</label>
+          <input value="23" required name="cookingTime" type="number" />
+          <label>Servings</label>
+          <input value="23" required name="servings" type="number" />
+        </div>
+
+        <div class="upload__column">
+          <h3 class="upload__heading">Ingredients</h3>
+          <label>Ingredient 1</label>
+          <input
+            value="0.5,kg,Rice"
+            type="text"
+            required
+            name="ingredient-1"
+            placeholder="Format: 'Quantity,Unit,Description'"
+          />
+          <label>Ingredient 2</label>
+          <input
+            value="1,,Avocado"
+            type="text"
+            name="ingredient-2"
+            placeholder="Format: 'Quantity,Unit,Description'"
+          />
+          <label>Ingredient 3</label>
+          <input
+            value=",,salt"
+            type="text"
+            name="ingredient-3"
+            placeholder="Format: 'Quantity,Unit,Description'"
+          />
+          <label>Ingredient 4</label>
+          <input
+            type="text"
+            name="ingredient-4"
+            placeholder="Format: 'Quantity,Unit,Description'"
+          />
+          <label>Ingredient 5</label>
+          <input
+            type="text"
+            name="ingredient-5"
+            placeholder="Format: 'Quantity,Unit,Description'"
+          />
+          <label>Ingredient 6</label>
+          <input
+            type="text"
+            name="ingredient-6"
+            placeholder="Format: 'Quantity,Unit,Description'"
+          />
+        </div>
+
+        <button class="btn upload__btn">
+          <svg>
+            <use href="src/img/icons.svg#icon-upload-cloud"></use>
+          </svg>
+          <span>Upload</span>
+        </button>
+      </form>
+    </div> -->
+  </body>
+</html>

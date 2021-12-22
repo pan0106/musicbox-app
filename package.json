@@ -1,0 +1,21 @@
+{
+  "name": "musicbox",
+  "version": "1.0.0",
+  "description": "music application",
+  "default": "index.html",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build --no-minify index.html --dist-dir ./dist"
+  },
+  "author": "weili pan",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "1.26.10",
+    "parcel": "^2.0.0-beta.1"
+  },
+  "dependencies": {
+    "core-js": "^3.10.1",
+    "fractional": "^1.0.0",
+    "regenerator-runtime": "^0.13.7"
+  }
+}

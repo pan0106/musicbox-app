@@ -1,0 +1,94 @@
+.section1 {
+  grid-area: features;
+}
+
+.features {
+  max-width: 100rem;
+  margin: 6rem auto 0 auto;
+  background-color: #fff;
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.7)
+    ),
+    url(../img/becca-tapert-7zHVYSRIj8Y-unsplash1.jpg);
+  background-size: cover; /*cover:不管viewport的寬是多少 會盡量配合裡面的圖*/
+  background-position: 75% 75%; /*把畫面拉大拉小 就能看出差別*/
+  border-radius: 2px;
+  box-shadow: 0 1.5rem 2rem rgba(black, 0.2);
+
+  &__header {
+    font-size: 2.25rem;
+    font-weight: 600;
+    align-self: center;
+  }
+
+  &__tab-container {
+    display: flex;
+    justify-content: center;
+  }
+  &__tab {
+    transform: translateY(-50%);
+    @extend %tab;
+    padding: 1.5rem 4rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+
+    &:not(:last-child) {
+      margin-right: 8.5rem;
+    }
+
+    & span {
+      margin-right: 1rem;
+      font-weight: 600;
+      display: inline-block;
+    }
+    &--active {
+      transform: translateY(-66%);
+    }
+  }
+
+  &__content {
+    display: none;
+
+    /* JUST PRESENTATIONAL */
+    font-size: 1.7rem;
+    padding: 2.5rem 7rem 6.5rem 7rem;
+
+    &--active {
+      display: grid;
+      grid-template-rows: 7rem 1fr;
+    }
+  }
+
+  & p {
+    font-size: 2rem;
+    font-weight: 400;
+  }
+}
+
+/////////////////////////
+
+%tab {
+  background-color: $color-grad-3;
+  border-radius: 10rem;
+  border: none;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: $color-grad-2;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  & > *:first-child {
+    margin-right: 1rem;
+  }
+}

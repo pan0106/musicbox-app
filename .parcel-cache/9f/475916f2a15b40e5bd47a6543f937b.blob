@@ -1,0 +1,32 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+class NavView {
+  constructor() {
+    _defineProperty(this, "_parentElement", document.querySelector('.nav__links'));
+  }
+
+  addHandlerClickNav() {
+    this._parentElement.addEventListener('click', function (e) {
+      e.preventDefault(); //matching strategy
+
+      if (e.target.classList.contains('nav__link')) {
+        const id = e.target.getAttribute('href');
+        document.querySelector(id).scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    });
+  }
+
+}
+
+var _default = new NavView();
+
+exports.default = _default;
