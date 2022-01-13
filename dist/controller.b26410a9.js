@@ -816,7 +816,7 @@ const getJSON = async function (url) {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: 'Bearer VKn0hb1CRidAxlk1DvNYnw=='
+        Authorization: 'Bearer yqwJbJENMsuTyBnH_TYtOQ=='
       }
     });
     const res = await Promise.race([fetchPro, timeout(_config.TIMEOUT_SEC)]);
