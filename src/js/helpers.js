@@ -14,7 +14,7 @@ export const getJSON = async function (url) {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: 'Bearer yqwJbJENMsuTyBnH_TYtOQ==',
+        Authorization: 'Bearer G9tbjFzqp6zRLSczrReb1Q==',
       },
     });
     const res = await Promise.race([fetchPro, timeout(TIMEOUT_SEC)]);
